@@ -33,7 +33,7 @@ jobs:
           echo "$ANDROID_SDK_ROOT/build-tools/$latest_version_number" >> $GITHUB_PATH
 
       - name: Build Unsigned Release APK
-        run: ./gradlew assembleRelease --stacktrace --info
+        run: ./gradlew assembleRelease --stacktrace --debug
 
       - name: Generate Signing Key
         env:
