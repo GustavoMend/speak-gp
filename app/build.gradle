@@ -10,12 +10,12 @@ configurations {
 }
 
 android {
-    namespace 'org.teslasoft.assistant'
+    namespace 'org.teslasoft.assistant.modified'
     compileSdk 35
     // compileSdkPreview "Baklava"
 
     defaultConfig {
-        applicationId "org.teslasoft.assistant2"
+        applicationId "org.teslasoft.assistant.modified"
         minSdk 28
         targetSdk 35
         // targetSdkPreview "Baklava"
