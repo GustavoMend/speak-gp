@@ -10,7 +10,7 @@ configurations {
 }
 
 android {
-    namespace 'org.teslasoft.assistant2'
+    namespace 'org.teslasoft.assistant'
     compileSdk 35
     // compileSdkPreview "Baklava"
 
