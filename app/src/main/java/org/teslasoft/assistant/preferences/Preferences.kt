@@ -66,6 +66,9 @@ class Preferences private constructor(private var preferences: SharedPreferences
     fun setPreferences(chatId: String, context: Context) {
         this.chatId = chatId
         this.preferences = context.getSharedPreferences("settings.$chatId", Context.MODE_PRIVATE)
+        if (getApiEndpointId() == "") {
+            setApiEndpointId(Hash.hash("Default"))
+        }
     }
 
     /**
