@@ -21,6 +21,7 @@ android {
         // targetSdkPreview "Baklava"
         versionCode 42810
         versionName "4.28"
+        manifestPlaceholders = [ fileProviderAuthority: "${applicationId}.fileprovider" ]
     }
 
     buildTypes {
