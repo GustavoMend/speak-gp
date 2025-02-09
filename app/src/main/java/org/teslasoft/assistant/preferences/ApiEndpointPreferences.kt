@@ -132,23 +132,6 @@ class ApiEndpointPreferences private constructor(private var preferences: Shared
         }
         return null
     }
-    fun getChatApiEndpoint(context: Context, chatId: String): ApiEndpointObject {
-        val label = getString("$chatId_label", "")
-        val host = getString("$chatId_host", "")
-        val apiKey: String = EncryptedPreferences.getEncryptedPreference(context, "api_endpoint", "$chatId_api_key")
-
-        return ApiEndpointObject(label, host, apiKey)
-    }
-
-    fun setChatApiEndpoint(context: Context, chatId: String, endpoint: ApiEndpointObject) {
-        putString("$chatId_label", endpoint.label)
-        putString("$chatId_host", endpoint.host)
-        EncryptedPreferences.setEncryptedPreference(context, "api_endpoint", "$chatId_api_key", endpoint.apiKey)
-
-        for (listener in listeners) {
-            listener.onApiEndpointChange()
-        }
-    }
 
     fun interface OnApiEndpointChangeListener {
         fun onApiEndpointChange()
