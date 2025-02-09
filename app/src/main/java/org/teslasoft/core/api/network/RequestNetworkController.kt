@@ -39,8 +39,8 @@ open class RequestNetworkController {
 
         const val REQUEST_PARAM = 0
 
-        private const val SOCKET_TIMEOUT: Long = 15000
-        private const val READ_TIMEOUT: Long = 25000
+        private const val SOCKET_TIMEOUT: Long = 60000
+        private const val READ_TIMEOUT: Long = 60000
 
         protected var client: OkHttpClient? = null
         private var mInstance: RequestNetworkController? = null
