@@ -1638,7 +1638,7 @@ class ChatActivity : FragmentActivity(), ChatAdapter.OnUpdateListener {
             val config = OpenAIConfig(
                 token = key!!,
                 logging = LoggingConfig(LogLevel.None, Logger.Simple),
-                timeout = Timeout(socket = 30.seconds),
+                timeout = Timeout(socket = 90.seconds),
                 organization = null,
                 headers = emptyMap(),
                 host = OpenAIHost(apiEndpointObject?.host!!),
@@ -1650,7 +1650,7 @@ class ChatActivity : FragmentActivity(), ChatAdapter.OnUpdateListener {
             val configOpenAI = OpenAIConfig(
                 token = openAIKey.toString(),
                 logging = LoggingConfig(LogLevel.None, Logger.Simple),
-                timeout = Timeout(socket = 30.seconds),
+                timeout = Timeout(socket = 90.seconds),
                 organization = null,
                 headers = emptyMap(),
                 host = OpenAIHost("https://api.openai.com/v1/"),
