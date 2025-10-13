@@ -324,26 +324,14 @@ class ChatActivity : FragmentActivity(), ChatAdapter.OnUpdateListener {
             usageOut = 0
             inCost = 0.0f
             outCost = 0.0f
-
-            var i = messagesUsageProjection.size - 1
-
-            while (i > 0) {
-                var j = 0
-                var c = 0
-
-                while (j < i) {
-                    c += messagesUsageProjection[j]["tokens"] as Int
-                    j++
-                }
-
-                usageIn += c
-                i--
-            }
-
+            // Simply sum tokens for each message type
             for (m in messagesUsageProjection) {
-                val msgUsage = if (m["isBot"] == true) m["tokens"] as Int else 0
-
-                usageOut += msgUsage
+                val tokens = m["tokens"] as Int
+                if (m["isBot"] == true) {
+                    usageOut += tokens
+                } else {
+                    usageIn += tokens
+                }
             }
 
             inCost = usageIn * priceIn
@@ -3100,3 +3088,4 @@ class ChatActivity : FragmentActivity(), ChatAdapter.OnUpdateListener {
         supportFinishAfterTransition()
     }
 }
+
