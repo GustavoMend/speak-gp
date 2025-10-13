@@ -55,13 +55,14 @@ jobs:
           SIGNING_KEY_PASSWORD: ${{ env.SIGNING_KEY_PASSWORD }}
         run: |
           BUILD_TOOLS=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
-          APK_DIR=app/build/outputs/apk/${{ env.BUILD_VARIANT,, }}
+          VARIANT_LOWER=$(echo "${BUILD_VARIANT}" | tr '[:upper:]' '[:lower:]')
+          APK_DIR="app/build/outputs/apk/${VARIANT_LOWER}"
           UNSIGNED_APK=$(ls "$APK_DIR"/*-unsigned.apk)
-          ALIGNED_APK="$APK_DIR"/app-release-aligned.apk
-          SIGNED_APK="$APK_DIR"/app-release-signed.apk
+          ALIGNED_APK="$APK_DIR/app-release-aligned.apk"
+          SIGNED_APK="$APK_DIR/app-release-signed.apk"
           "$BUILD_TOOLS"/zipalign -v -p 4 "$UNSIGNED_APK" "$ALIGNED_APK"
           "$BUILD_TOOLS"/apksigner sign \
-            --ks ../android-release.keystore \
+            --ks android-release.keystore \
             --ks-key-alias "$SIGNING_ALIAS" \
             --ks-pass pass:"$SIGNING_KEY_PASSWORD" \
             --key-pass pass:"$SIGNING_KEY_PASSWORD" \
@@ -72,4 +73,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-release-signed
-          path: app/app/build/outputs/apk/${{ env.BUILD_VARIANT,, }}/app-release-signed.apk
+          path: app/build/outputs/apk/${{ steps.lower_variant.outputs.value }}/app-release-signed.apk
