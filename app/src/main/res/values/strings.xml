@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">SpeakGPT</string>
+    <string name="app_name" translatable="false">AppGPT</string>
     <string name="app_name_lite" translatable="false">SpeakGPT Lite</string>
     <string name="avatar_gpt" translatable="false">GPT</string>
     <string name="avatar_gemini" translatable="false">Gemini</string>
