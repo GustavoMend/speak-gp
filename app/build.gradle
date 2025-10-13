@@ -15,7 +15,7 @@ android {
     // compileSdkPreview "Baklava"
 
     defaultConfig {
-        applicationId "org.teslasoft.assistant.modifiedtwo"
+        applicationId "org.teslasoft.assistant.dev"
         minSdk 28
         targetSdk 35
         // targetSdkPreview "Baklava"
